@@ -1,0 +1,30 @@
+{
+  "name": "ambient-infra-cleanup-agent",
+  "version": "0.1.0",
+  "description": "Ambient Infra Cleanup Agent — recommend-only background agent that finds stale dbt models and overprovisioned Kubernetes workloads, and drafts review-ready pull requests.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "bin": {
+    "infra-cleanup": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "start": "node dist/cli.js",
+    "dev": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "yaml": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/manifest/v12.json",
+    "dbt_version": "1.8.0",
+    "generated_at": "2026-06-12T23:30:00Z",
+    "project_name": "shop",
+    "adapter_type": "snowflake"
+  },
+  "nodes": {
+    "model.shop.stale_orders_snapshot": {
+      "resource_type": "model",
+      "unique_id": "model.shop.stale_orders_snapshot",
+      "name": "stale_orders_snapshot",
+      "package_name": "shop",
+      "path": "marts/stale_orders_snapshot.sql",
+      "original_file_path": "models/marts/stale_orders_snapshot.sql",
+      "patch_path": "shop://models/marts/_marts.yml",
+      "relation_name": "ANALYTICS.MARTS.STALE_ORDERS_SNAPSHOT",
+      "tags": ["marts", "orders"],
+      "config": { "materialized": "table", "enabled": true },
+      "depends_on": { "nodes": ["model.shop.daily_active_users"], "macros": [] }
+    },
+    "model.shop.legacy_revenue": {
+      "resource_type": "model",
+      "unique_id": "model.shop.legacy_revenue",
+      "name": "legacy_revenue",
+      "package_name": "shop",
+      "path": "marts/legacy_revenue.sql",
+      "original_file_path": "models/marts/legacy_revenue.sql",
+      "patch_path": "shop://models/marts/_marts.yml",
+      "relation_name": "ANALYTICS.MARTS.LEGACY_REVENUE",
+      "tags": ["marts", "finance"],
+      "config": { "materialized": "table", "enabled": true },
+      "depends_on": { "nodes": [], "macros": [] }
+    },
+    "model.shop.daily_active_users": {
+      "resource_type": "model",
+      "unique_id": "model.shop.daily_active_users",
+      "name": "daily_active_users",
+      "package_name": "shop",
+      "path": "marts/daily_active_users.sql",
+      "original_file_path": "models/marts/daily_active_users.sql",
+      "patch_path": "shop://models/marts/_marts.yml",
+      "relation_name": "ANALYTICS.MARTS.DAILY_ACTIVE_USERS",
+      "tags": ["marts", "product"],
+      "config": { "materialized": "table", "enabled": true },
+      "depends_on": { "nodes": [], "macros": [] }
+    },
+    "model.shop.experimental_temp": {
+      "resource_type": "model",
+      "unique_id": "model.shop.experimental_temp",
+      "name": "experimental_temp",
+      "package_name": "shop",
+      "path": "staging/experimental_temp.sql",
+      "original_file_path": "models/staging/experimental_temp.sql",
+      "patch_path": "shop://models/staging/_staging.yml",
+      "relation_name": "ANALYTICS.STAGING.EXPERIMENTAL_TEMP",
+      "tags": ["staging", "experimental"],
+      "config": { "materialized": "view", "enabled": true },
+      "depends_on": { "nodes": [], "macros": [] }
+    },
+    "model.shop.revenue_daily": {
+      "resource_type": "model",
+      "unique_id": "model.shop.revenue_daily",
+      "name": "revenue_daily",
+      "package_name": "shop",
+      "path": "marts/revenue_daily.sql",
+      "original_file_path": "models/marts/revenue_daily.sql",
+      "patch_path": "shop://models/marts/_marts.yml",
+      "relation_name": "ANALYTICS.MARTS.REVENUE_DAILY",
+      "tags": ["marts", "finance"],
+      "config": { "materialized": "table", "enabled": true },
+      "depends_on": { "nodes": ["model.shop.legacy_revenue"], "macros": [] }
+    },
+    "model.shop.revenue_monthly": {
+      "resource_type": "model",
+      "unique_id": "model.shop.revenue_monthly",
+      "name": "revenue_monthly",
+      "package_name": "shop",
+      "path": "marts/revenue_monthly.sql",
+      "original_file_path": "models/marts/revenue_monthly.sql",
+      "patch_path": "shop://models/marts/_marts.yml",
+      "relation_name": "ANALYTICS.MARTS.REVENUE_MONTHLY",
+      "tags": ["marts", "finance"],
+      "config": { "materialized": "table", "enabled": true },
+      "depends_on": { "nodes": ["model.shop.legacy_revenue"], "macros": [] }
+    }
+  },
+  "sources": {},
+  "metrics": {},
+  "exposures": {
+    "exposure.shop.revenue_dashboard": {
+      "resource_type": "exposure",
+      "unique_id": "exposure.shop.revenue_dashboard",
+      "name": "revenue_dashboard",
+      "type": "dashboard",
+      "maturity": "high",
+      "owner": { "name": "Finance Analytics", "email": "finance@shop.example" },
+      "depends_on": {
+        "nodes": ["model.shop.revenue_daily", "model.shop.revenue_monthly"],
+        "macros": []
+      }
+    },
+    "exposure.shop.dau_dashboard": {
+      "resource_type": "exposure",
+      "unique_id": "exposure.shop.dau_dashboard",
+      "name": "dau_dashboard",
+      "type": "dashboard",
+      "maturity": "high",
+      "owner": { "name": "Product Analytics", "email": "product@shop.example" },
+      "depends_on": {
+        "nodes": ["model.shop.daily_active_users"],
+        "macros": []
+      }
+    }
+  },
+  "parent_map": {
+    "model.shop.stale_orders_snapshot": ["model.shop.daily_active_users"],
+    "model.shop.legacy_revenue": [],
+    "model.shop.daily_active_users": [],
+    "model.shop.experimental_temp": [],
+    "model.shop.revenue_daily": ["model.shop.legacy_revenue"],
+    "model.shop.revenue_monthly": ["model.shop.legacy_revenue"],
+    "exposure.shop.revenue_dashboard": ["model.shop.revenue_daily", "model.shop.revenue_monthly"],
+    "exposure.shop.dau_dashboard": ["model.shop.daily_active_users"]
+  },
+  "child_map": {
+    "model.shop.stale_orders_snapshot": [],
+    "model.shop.legacy_revenue": ["model.shop.revenue_daily", "model.shop.revenue_monthly"],
+    "model.shop.daily_active_users": ["model.shop.stale_orders_snapshot", "exposure.shop.dau_dashboard"],
+    "model.shop.experimental_temp": [],
+    "model.shop.revenue_daily": ["exposure.shop.revenue_dashboard"],
+    "model.shop.revenue_monthly": ["exposure.shop.revenue_dashboard"],
+    "exposure.shop.revenue_dashboard": [],
+    "exposure.shop.dau_dashboard": []
+  }
+}

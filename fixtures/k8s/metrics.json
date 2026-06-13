@@ -1,0 +1,56 @@
+[
+  {
+    "workload": "deployment/prod/api",
+    "namespace": "prod",
+    "container": "api",
+    "requestMemory": "1Gi",
+    "limitMemory": "1Gi",
+    "usageSamplesMiB": [450, 460, 470, 480, 490, 495, 500, 500, 505, 510, 515, 520, 525, 540],
+    "oomKills": 0,
+    "restarts": 1,
+    "manifestPath": "api.yaml"
+  },
+  {
+    "workload": "deployment/prod/worker",
+    "namespace": "prod",
+    "container": "worker",
+    "requestMemory": "1Gi",
+    "limitMemory": "1Gi",
+    "usageSamplesMiB": [460, 470, 480, 490, 500, 500, 510, 520, 520, 530, 540, 550, 560, 580],
+    "oomKills": 2,
+    "lastOomAt": "2026-06-10T00:00:00Z",
+    "restarts": 12,
+    "manifestPath": "worker.yaml"
+  },
+  {
+    "workload": "deployment/dev/scratch",
+    "namespace": "dev",
+    "container": "scratch",
+    "requestMemory": "512Mi",
+    "usageSamplesMiB": [60, 65, 70, 72, 75, 78, 80, 80, 82, 85, 88, 90, 92, 95],
+    "oomKills": 0,
+    "restarts": 0,
+    "manifestPath": "scratch.yaml"
+  },
+  {
+    "workload": "deployment/prod/cache",
+    "namespace": "prod",
+    "container": "cache",
+    "requestMemory": "256Mi",
+    "limitMemory": "256Mi",
+    "usageSamplesMiB": [150, 155, 160, 165, 170, 172, 175, 178, 180, 182, 184, 186, 188, 190],
+    "oomKills": 0,
+    "restarts": 0,
+    "manifestPath": "cache.yaml"
+  },
+  {
+    "workload": "deployment/prod/tiny",
+    "namespace": "prod",
+    "container": "tiny",
+    "requestMemory": "512Mi",
+    "usageSamplesMiB": [50, 60],
+    "oomKills": 0,
+    "restarts": 0,
+    "manifestPath": "tiny.yaml"
+  }
+]

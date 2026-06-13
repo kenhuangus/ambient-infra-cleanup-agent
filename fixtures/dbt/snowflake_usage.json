@@ -1,0 +1,38 @@
+{
+  "model.shop.stale_orders_snapshot": {
+    "lastReadAt": "2025-12-15T08:14:00Z",
+    "readCount": 0,
+    "windowDays": 90,
+    "monthlyComputeUsd": 412.5
+  },
+  "model.shop.legacy_revenue": {
+    "lastReadAt": "2026-01-20T09:02:00Z",
+    "readCount": 2,
+    "windowDays": 90,
+    "monthlyComputeUsd": 268.0
+  },
+  "model.shop.daily_active_users": {
+    "lastReadAt": "2026-06-11T22:41:00Z",
+    "readCount": 612,
+    "windowDays": 30,
+    "monthlyComputeUsd": 95.25
+  },
+  "model.shop.experimental_temp": {
+    "lastReadAt": "2025-10-30T00:00:00Z",
+    "readCount": 0,
+    "windowDays": 30,
+    "monthlyComputeUsd": 18.0
+  },
+  "model.shop.revenue_daily": {
+    "lastReadAt": "2026-06-12T06:00:00Z",
+    "readCount": 220,
+    "windowDays": 30,
+    "monthlyComputeUsd": 61.0
+  },
+  "model.shop.revenue_monthly": {
+    "lastReadAt": "2026-06-09T06:30:00Z",
+    "readCount": 41,
+    "windowDays": 30,
+    "monthlyComputeUsd": 22.0
+  }
+}

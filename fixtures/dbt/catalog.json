@@ -1,0 +1,68 @@
+{
+  "metadata": {
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/catalog/v1.json",
+    "generated_at": "2026-06-12T23:31:00Z"
+  },
+  "nodes": {
+    "model.shop.stale_orders_snapshot": {
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "STALE_ORDERS_SNAPSHOT",
+        "database": "ANALYTICS"
+      },
+      "stats": {
+        "row_count": { "id": "row_count", "label": "Row count", "value": 4820000 },
+        "bytes": { "id": "bytes", "label": "Approximate size", "value": 1530000000 }
+      },
+      "columns": {}
+    },
+    "model.shop.legacy_revenue": {
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "LEGACY_REVENUE",
+        "database": "ANALYTICS"
+      },
+      "stats": {
+        "row_count": { "id": "row_count", "label": "Row count", "value": 920000 },
+        "bytes": { "id": "bytes", "label": "Approximate size", "value": 410000000 }
+      },
+      "columns": {}
+    },
+    "model.shop.daily_active_users": {
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "DAILY_ACTIVE_USERS",
+        "database": "ANALYTICS"
+      },
+      "stats": {
+        "row_count": { "id": "row_count", "label": "Row count", "value": 365000 },
+        "bytes": { "id": "bytes", "label": "Approximate size", "value": 98000000 }
+      },
+      "columns": {}
+    },
+    "model.shop.revenue_daily": {
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "REVENUE_DAILY",
+        "database": "ANALYTICS"
+      },
+      "stats": {},
+      "columns": {}
+    },
+    "model.shop.revenue_monthly": {
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "REVENUE_MONTHLY",
+        "database": "ANALYTICS"
+      },
+      "stats": {},
+      "columns": {}
+    }
+  },
+  "sources": {}
+}

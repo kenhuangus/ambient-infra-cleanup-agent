@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tiny
+  namespace: prod
+  labels:
+    app: tiny
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tiny
+  template:
+    metadata:
+      labels:
+        app: tiny
+    spec:
+      containers:
+        - name: tiny
+          image: example/tiny:0.0.1
+          resources:
+            requests:
+              cpu: 50m
+              memory: 512Mi
+            limits:
+              cpu: 100m
+              memory: 512Mi

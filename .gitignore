@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+*.tsbuildinfo
+
+# test / coverage
+coverage/
+
+# agent runtime state
+.agent-state/
+
+# local overrides & secrets
+*.local
+.env
+.env.*
+
+# editor / os
+.DS_Store
+*.log
